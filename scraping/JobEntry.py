@@ -13,6 +13,6 @@ class JobEntry:
         link: str
             URL for job listing.
         """
-        self.title = title
-        self.summary = summary
-        self.link = link
+        self._title = title
+        self._summary = summary
+        self._link = link
