@@ -16,3 +16,12 @@ class JobEntry:
         self._title = title
         self._summary = summary
         self._link = link
+
+    def get_title(self):
+        return self._title
+
+    def get_summary(self):
+        return self._summary
+
+    def get_link(self):
+        return self._link
