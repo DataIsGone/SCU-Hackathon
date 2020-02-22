@@ -1,0 +1,2 @@
+# SCU-Hackathon
+SCU Hackathon
