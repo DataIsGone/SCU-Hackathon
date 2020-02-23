@@ -1,4 +1,3 @@
-from scraping import IndeedScraper
 import json
 
 
