@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
+
 # IndeedScraper.py
 # script usage:
-# python IndeedScraper.py <filename>.json "Job Description" "City (optional)" "State (optional)" "zip code (optional)"
+# python IndeedScraper.py filename.json "Job Description" "City (optional)" "State (optional)" "zip code (optional)"
 
 
 import urllib
@@ -41,9 +43,7 @@ class IndeedScraper:
             json.dump(self._results, outfile)
 
 
-
 if __name__ == '__main__':
     indeed = IndeedScraper()
     indeed.search(*argv[2:])
-    print(indeed.get_results())
     indeed.save_results_as_json(argv[1])
