@@ -1,4 +1,8 @@
 {% extends "job_searcher/base.html" %}
 {% block content %}
-Hello world
+<form method="POST" class="post-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="save btn btn-default">Save</button>
+</form>
 {% endblock content %}
