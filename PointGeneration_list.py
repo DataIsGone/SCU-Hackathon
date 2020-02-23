@@ -2,15 +2,6 @@ from scraping import IndeedScraper
 import json
 
 
-def get_json(file):
-    try:
-        with open(file, 'r') as infile:
-            job_list = json.load(infile)
-            return job_list
-    except FileNotFoundError:
-        print("File not found")
-
-
 def parse_string(string):
     str_list = []
     i = 0
@@ -44,13 +35,14 @@ class PointGeneration:
 
     _RATED_JOBS = []
 
-    def __init__(self, file):
-        self.json_file = get_json(file)
+    def __init__(self, scraped_list):
+        # self.json_file = get_json(file)
+        self.job_aggregate_data = scraped_list
         self.total_score = 0
         self.job = {}
 
     def base_scoring(self):
-        for job in self.json_file:
+        for job in self.job_aggregate_data:
             for category in job.keys():
                 if category == "title":
                     job_title = job.get("title").lower()
@@ -84,7 +76,7 @@ class PointGeneration:
         return False
 
     def apply_modifiers(self):
-        for job in self.json_file:
+        for job in self.self.job_aggregate_data:
             for category in job.keys():
                 if category == "title":
                     job_title = job.get("title").lower()
@@ -102,7 +94,7 @@ class PointGeneration:
 
     def modify_score_for_search_term(self, search_term):
         count = 0
-        for job in self.json_file:
+        for job in self.job_aggregate_data:
             for category in job.keys():
                 if category == "summary":
                     summary = parse_string(job.get("summary").lower())
@@ -112,8 +104,6 @@ class PointGeneration:
                             print("count: " + str(count))
         search_term_modifier = 0.25 * count
         self.total_score += search_term_modifier
-        print(summary)
-        print(": " + str(self.total_score))
 
 
 def main():
@@ -121,6 +111,7 @@ def main():
     test_point_gen.base_scoring()
     test_point_gen.apply_modifiers()
     test_point_gen.modify_score_for_search_term("support")
+
 
 if __name__ == "__main__":
     main()
