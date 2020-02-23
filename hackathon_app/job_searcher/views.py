@@ -25,4 +25,4 @@ def home(request):
 
 
 def about(request):
-    return HttpResponse(render(request, 'job_searcher/about.html'))
+    return HttpResponse(render(request, 'job_searcher/about.html', {'title': 'About'}))
