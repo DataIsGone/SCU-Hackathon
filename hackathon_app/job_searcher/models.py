@@ -1,8 +1,8 @@
 from django.db import models
 
 class Search(models.Model):
-    description = models.TextField()
-    city = models.TextField()
+    description = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
     state = models.CharField(max_length=2)
 
     def __str__(self):
