@@ -5,6 +5,9 @@ class Search(models.Model):
     city = models.TextField()
     state = models.CharField(max_length=2)
 
+    def __str__(self):
+        return self.description
+
 class Result(models.Model):
     title = models.TextField()
     summary = models.TextField()
@@ -12,3 +15,6 @@ class Result(models.Model):
     company = models.TextField()
     url = models.URLField()
     listing_id = models.TextField()
+
+    def __str__(self):
+        return self.title
