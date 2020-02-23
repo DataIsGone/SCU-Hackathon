@@ -1,10 +1,17 @@
 {% extends "job_searcher/base.html" %}
 {% block content %}
-    {% for result in results %}
-    <h1>
+{% for result in results %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      {{ result.company }}
+      <small class="text-muted">{{ result.location }}</small>
+    </div>
+    <h2>
       <a href="{{ result.url }}">{{ result.title }}</a>
-    </h1>
-    <p>{{ result.company }} at {{ result.location }}.</p>
+    </h2>
     <p>{{ result.summary }}</p>
+  </div>
+</article>
     {% endfor %}
 {% endblock content %}
