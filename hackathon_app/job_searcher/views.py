@@ -1,26 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from job_searcher.modules.IndeedScraper import IndeedScraper
 
-results = [
-    {'listing_id': 'p123',
-     'title': 'python dev',
-     'url': 'https://www.indeed.com/somelisting',
-     'company': 'Local big name company',
-     'location': 'Right down the road',
-     'summary': 'A fun python job!'
-    },
-    {'listing_id': 'p456',
-     'title': 'Data Scientist',
-     'url': 'https://www.indeed.com/this_other_listing',
-     'company': 'Far away startup',
-     'location': 'Across the country',
-     'summary': 'A fun new job where you can do ML!'
-    },
-]
+indeed = IndeedScraper()
+indeed.search("Python Developer", "Santa Clara", "CA")
 
 
 def home(request):
-    context = {'results': results}
+    context = {'results': indeed.get_results()}
     return render(request, 'job_searcher/home.html', context)
 
 
