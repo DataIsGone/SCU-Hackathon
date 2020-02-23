@@ -46,4 +46,5 @@ class IndeedScraper:
 if __name__ == '__main__':
     indeed = IndeedScraper()
     indeed.search(*argv[2:])
-    indeed.save_results_as_json(argv[1])
+    # indeed.save_results_as_json(argv[1])
+
